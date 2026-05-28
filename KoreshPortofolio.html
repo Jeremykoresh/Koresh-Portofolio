@@ -1,0 +1,787 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeremy Koresh — Portfolio & Link Hub</title>
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-2: #0d1424;
+      --card: rgba(15, 22, 39, 0.78);
+      --card-2: rgba(18, 26, 46, 0.92);
+      --text: #eef3ff;
+      --muted: #a9b4d0;
+      --line: rgba(164, 178, 230, 0.14);
+      --accent: #7c5cff;
+      --accent-2: #20d3ff;
+      --good: #61ffb4;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --max: 1180px;
+    }* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(124, 92, 255, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(32, 211, 255, 0.14), transparent 24%),
+    linear-gradient(180deg, #050814 0%, #070b14 32%, #060914 100%);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container {
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(18px);
+  background: rgba(5, 8, 20, 0.62);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  gap: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 10px 28px rgba(124, 92, 255, 0.35);
+  color: #fff;
+  font-weight: 900;
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover { color: #fff; }
+
+.hero {
+  padding: 40px 0 18px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.95fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(18, 26, 46, 0.78), rgba(12, 18, 32, 0.84));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.hero-card {
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: auto -80px -100px auto;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.35), transparent 68%);
+  pointer-events: none;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(124, 92, 255, 0.14);
+  color: #d9d2ff;
+  border: 1px solid rgba(124, 92, 255, 0.28);
+  font-size: 0.92rem;
+  margin-bottom: 18px;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: clamp(2.3rem, 5vw, 4.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.hero-title span {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffffff, #d9d7ff 36%, #8fe9ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-sub {
+  margin: 16px 0 0;
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.2); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 16px 34px rgba(124, 92, 255, 0.28);
+}
+
+.hero-meta {
+  display: grid;
+  gap: 16px;
+}
+
+.profile-card {
+  padding: 24px;
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.avatar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  width: 86px;
+  height: 86px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.28), transparent 22%),
+    linear-gradient(135deg, rgba(124,92,255,0.98), rgba(32,211,255,0.82));
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  font-weight: 900;
+  box-shadow: 0 18px 34px rgba(124, 92, 255, 0.28);
+}
+
+.name-block h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.name-block p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.mini {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.03);
+  padding: 14px;
+}
+
+.mini strong { display: block; font-size: 1.18rem; }
+.mini span { color: var(--muted); font-size: 0.9rem; }
+
+.section {
+  padding: 18px 0 8px;
+}
+
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 24px 0 16px;
+}
+
+.section-head h3 {
+  margin: 0;
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
+}
+
+.section-head p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 62ch;
+  line-height: 1.6;
+  font-size: 0.98rem;
+}
+
+.about {
+  padding: 24px;
+}
+
+.about p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.85;
+  font-size: 1.02rem;
+}
+
+.social-grid,
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.social-card,
+.content-card {
+  padding: 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  transition: transform 0.18s ease, border-color 0.18s ease;
+  overflow: hidden;
+}
+
+.social-card:hover,
+.content-card:hover { transform: translateY(-3px); border-color: rgba(124,92,255,0.35); }
+
+.social-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.social-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 1.15rem;
+  background: linear-gradient(135deg, rgba(124,92,255,0.22), rgba(32,211,255,0.2));
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.social-card h4,
+.content-card h4 {
+  margin: 0 0 6px;
+  font-size: 1.08rem;
+}
+
+.social-card p,
+.content-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.96rem;
+}
+
+.social-card .btn,
+.content-card .btn {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(97, 255, 180, 0.1);
+  color: #c9ffe6;
+  border: 1px solid rgba(97, 255, 180, 0.16);
+  font-size: 0.82rem;
+  margin-bottom: 14px;
+}
+
+.thumb {
+  height: 170px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  margin-bottom: 14px;
+  background: linear-gradient(135deg, rgba(124,92,255,0.35), rgba(32,211,255,0.15)),
+              radial-gradient(circle at 20% 20%, rgba(255,255,255,0.14), transparent 26%),
+              #10182b;
+  position: relative;
+}
+
+.thumb::after {
+  content: "PREVIEW";
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.62);
+  opacity: 0.85;
+}
+
+.thumb.img {
+  background-size: cover;
+  background-position: center;
+}
+
+.card-list {
+  display: grid;
+  gap: 16px;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.preview-card {
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.03);
+}
+
+.preview-shot {
+  height: 190px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.48)),
+    radial-gradient(circle at 15% 25%, rgba(32,211,255,0.22), transparent 22%),
+    radial-gradient(circle at 80% 20%, rgba(124,92,255,0.24), transparent 20%),
+    linear-gradient(135deg, #15213d, #0e1426);
+  margin-bottom: 14px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: end;
+  justify-content: start;
+  padding: 14px;
+  color: rgba(255,255,255,0.68);
+  font-size: 0.85rem;
+}
+
+.preview-shot .label {
+  display: inline-flex;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.blog-card {
+  padding: 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.03);
+  display: grid;
+  gap: 10px;
+}
+
+.blog-card .topline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+}
+
+.footer {
+  padding: 34px 0 44px;
+  color: var(--muted);
+  text-align: center;
+  border-top: 1px solid var(--line);
+  margin-top: 28px;
+}
+
+.footer strong { color: #fff; }
+
+.section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.section-nav a {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.03);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.section-nav a:hover { color: #fff; border-color: rgba(124,92,255,0.3); }
+
+@media (max-width: 980px) {
+  .hero-grid,
+  .social-grid,
+  .content-grid,
+  .preview-grid,
+  .blog-grid { grid-template-columns: 1fr; }
+
+  .section-head { align-items: start; flex-direction: column; }
+}
+
+@media (max-width: 640px) {
+  .container { width: min(var(--max), calc(100% - 22px)); }
+  .nav-inner { align-items: start; flex-direction: column; }
+  .nav-links { justify-content: flex-start; }
+  .hero-card,
+  .profile-card,
+  .about { padding: 18px; }
+  .hero-title { font-size: clamp(2rem, 14vw, 3.2rem); }
+  .mini-grid { grid-template-columns: 1fr; }
+  .hero-actions .btn { width: 100%; }
+}
+
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="Jeremy Koresh Home">
+        <div class="brand-mark">JK</div>
+        <div>
+          <div>Jeremy Koresh</div>
+          <div style="font-size:.82rem;color:var(--muted);font-weight:500;">Portfolio & Link Hub</div>
+        </div>
+      </a><div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#social">Social</a>
+    <a href="#projects">Projects</a>
+    <a href="#brainly">Brainly</a>
+    <a href="#blog">Blog</a>
+  </div>
+</div>
+
+  </nav>  <main id="home" class="hero">
+    <div class="container hero-grid">
+      <section class="panel hero-card">
+        <div class="badge">✦ Game Developer • Creator • Explorer</div>
+        <h1 class="hero-title">Jeremy <span>Koresh</span></h1>
+        <p class="hero-sub">
+          Tempat kumpulan karya digital, link medsos, project game, artikel, dan preview konten.
+          Desain dibuat clean, modern, dan cocok buat portfolio personal yang keliatan serius.
+        </p><div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">Lihat Project</a>
+      <a class="btn" href="#social">Buka Link</a>
+      <a class="btn" href="#about">Tentang Saya</a>
+    </div>
+
+    <div class="section-nav" aria-label="Quick links">
+      <a href="#social">Instagram</a>
+      <a href="#social">YouTube</a>
+      <a href="#social">Itch.io</a>
+      <a href="#social">Brainly</a>
+      <a href="#social">Blog</a>
+    </div>
+  </section>
+
+  <aside class="panel profile-card hero-meta">
+    <div class="avatar-wrap">
+      <div class="avatar">JK</div>
+      <div class="name-block">
+        <h2>Jeremy Koresh</h2>
+        <p>Website personal untuk link, karya, dan project.</p>
+      </div>
+    </div>
+
+    <div class="mini-grid">
+      <div class="mini">
+        <strong>05+</strong>
+        <span>Platform aktif</span>
+      </div>
+      <div class="mini">
+        <strong>03</strong>
+        <span>Project utama tampil</span>
+      </div>
+      <div class="mini">
+        <strong>1</strong>
+        <span>Website personal</span>
+      </div>
+      <div class="mini">
+        <strong>∞</strong>
+        <span>Ide yang bisa dikembangin</span>
+      </div>
+    </div>
+
+    <a class="btn btn-primary" href="#about">Mulai lihat isi</a>
+  </aside>
+</div>
+
+  </main>  <section id="about" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>About Me</h3>
+          <p>Bagian ini dibuat singkat, padat, dan enak dibaca. Tinggal ganti isi sesuai gaya kamu.</p>
+        </div>
+      </div>
+      <div class="panel about">
+        <p>
+          Saya membuat game, membangun ide digital, dan membagikan karya lewat berbagai platform.
+          Website ini berisi link sosial, project unggulan, preview jawaban, artikel, dan hal-hal yang saya kerjakan.
+          Tujuannya sederhana: semua karya penting terkumpul di satu tempat yang rapi dan gampang diakses.
+        </p>
+      </div>
+    </div>
+  </section>  <section id="social" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>Social Links</h3>
+          <p>Pakai card biar setiap platform terlihat jelas dan modern. Tinggal ganti link-nya saja.</p>
+        </div>
+      </div><div class="social-grid">
+    <article class="social-card">
+      <div class="social-top">
+        <div class="social-icon">◎</div>
+        <span class="pill">Instagram</span>
+      </div>
+      <h4>@your_instagram</h4>
+      <p>Update konten, foto, story, dan aktivitas personal.</p>
+      <a class="btn" href="https://instagram.com/" target="_blank" rel="noopener">Open Link</a>
+    </article>
+
+    <article class="social-card">
+      <div class="social-top">
+        <div class="social-icon">▶</div>
+        <span class="pill">YouTube</span>
+      </div>
+      <h4>Jeremy Koresh</h4>
+      <p>Konten video, showcase game, dan update project.</p>
+      <a class="btn" href="https://youtube.com/" target="_blank" rel="noopener">Open Link</a>
+    </article>
+
+    <article class="social-card">
+      <div class="social-top">
+        <div class="social-icon">⬢</div>
+        <span class="pill">Itch.io</span>
+      </div>
+      <h4>My Game Page</h4>
+      <p>Tempat upload dan tampilkan game yang sudah jadi.</p>
+      <a class="btn" href="https://itch.io/" target="_blank" rel="noopener">Open Link</a>
+    </article>
+
+    <article class="social-card">
+      <div class="social-top">
+        <div class="social-icon">✎</div>
+        <span class="pill">Brainly</span>
+      </div>
+      <h4>Preview Jawaban</h4>
+      <p>Taruh screenshot jawaban terbaik atau ringkasan topik.</p>
+      <a class="btn" href="#brainly">Lihat Preview</a>
+    </article>
+
+    <article class="social-card">
+      <div class="social-top">
+        <div class="social-icon">⌂</div>
+        <span class="pill">Blog</span>
+      </div>
+      <h4>Articles & Notes</h4>
+      <p>Catatan, artikel, atau tulisan singkat yang kamu buat.</p>
+      <a class="btn" href="#blog">Buka Blog</a>
+    </article>
+
+    <article class="social-card">
+      <div class="social-top">
+        <div class="social-icon">✦</div>
+        <span class="pill">Custom Link</span>
+      </div>
+      <h4>Link tambahan</h4>
+      <p>Bisa isi GitHub, Discord, WhatsApp, atau platform lain.</p>
+      <a class="btn" href="#home">Tambah Link</a>
+    </article>
+  </div>
+</div>
+
+  </section>  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>Featured Projects</h3>
+          <p>Setiap kategori hanya tampil 3 item supaya rapi, fokus, dan tidak bikin website penuh sesak.</p>
+        </div>
+      </div><div class="content-grid">
+    <article class="content-card">
+      <div class="tag">Game Project</div>
+      <div class="thumb"></div>
+      <h4>Space Shooter 1945</h4>
+      <p>Game action pesawat dengan musuh bertahap dan vibe arcade.</p>
+      <a class="btn" href="#">Detail Project</a>
+    </article>
+
+    <article class="content-card">
+      <div class="tag">Game Project</div>
+      <div class="thumb"></div>
+      <h4>Ocean Shark 2D</h4>
+      <p>Game 2D bertema laut dengan nuansa bawah air yang menarik.</p>
+      <a class="btn" href="#">Detail Project</a>
+    </article>
+
+    <article class="content-card">
+      <div class="tag">Game Project</div>
+      <div class="thumb"></div>
+      <h4>Minecraft 3D Lite</h4>
+      <p>Eksperimen voxel 3D dengan mode terbatas dan tampilan clean.</p>
+      <a class="btn" href="#">Detail Project</a>
+    </article>
+  </div>
+</div>
+
+  </section>  <section id="brainly" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>Brainly Preview</h3>
+          <p>Preview screenshot cocok kalau kamu mau tampilkan jawaban/penjelasan tanpa menaruh teks terlalu panjang.</p>
+        </div>
+      </div><div class="preview-grid">
+    <article class="preview-card">
+      <div class="preview-shot">
+        <span class="label">Masukkan screenshot jawaban di sini</span>
+      </div>
+      <h4>Matematika — SPLDV</h4>
+      <p>Ringkasan jawaban yang rapi dan mudah dibaca.</p>
+    </article>
+
+    <article class="preview-card">
+      <div class="preview-shot">
+        <span class="label">Masukkan screenshot jawaban di sini</span>
+      </div>
+      <h4>Bahasa Indonesia</h4>
+      <p>Preview materi atau jawaban singkat untuk topik tertentu.</p>
+    </article>
+
+    <article class="preview-card">
+      <div class="preview-shot">
+        <span class="label">Masukkan screenshot jawaban di sini</span>
+      </div>
+      <h4>Pemrograman Dasar</h4>
+      <p>Bagus untuk tampilkan penjelasan konsep coding yang pernah kamu buat.</p>
+    </article>
+  </div>
+</div>
+
+  </section>  <section id="blog" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>Blog / Notes</h3>
+          <p>Kalau kamu punya tulisan, opini, atau catatan, tampilkan 2 item terbaik saja supaya tetap ringkas.</p>
+        </div>
+      </div><div class="blog-grid">
+    <article class="blog-card">
+      <div class="topline">
+        <span class="pill">Article</span>
+        <span>•</span>
+        <span>8 min read</span>
+      </div>
+      <h4>Cara bikin portfolio game developer yang terlihat serius</h4>
+      <p>Isi artikel bisa berupa tips, pengalaman, atau penjelasan project yang kamu kerjakan.</p>
+      <a class="btn" href="#">Baca Artikel</a>
+    </article>
+
+    <article class="blog-card">
+      <div class="topline">
+        <span class="pill">Note</span>
+        <span>•</span>
+        <span>3 min read</span>
+      </div>
+      <h4>Catatan singkat tentang proses bikin game</h4>
+      <p>Tulis progres, tantangan, dan hal menarik dari setiap project yang kamu buat.</p>
+      <a class="btn" href="#">Baca Catatan</a>
+    </article>
+  </div>
+</div>
+
+  </section>  <footer class="footer">
+    <div class="container">
+      <strong>Jeremy Koresh</strong> — Portfolio & Link Hub
+      <div style="margin-top:10px;">© 2026 • Built with HTML, CSS, and JS</div>
+    </div>
+  </footer>
+</body>
+</html>
